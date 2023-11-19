@@ -6,4 +6,5 @@
 |Directory|Explanation|
 |:--:|:--:|
 |EDA|데이터 전처리, 간단한 데이터 확인 ipynb|
-|TDB||
+|NLP||
+|TBD||
