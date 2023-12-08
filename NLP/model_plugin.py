@@ -31,7 +31,7 @@ class klue_Dataset(torch.utils.data.Dataset):
         return len(self.label)
 
 
-def set_seed(seed):
+def set_seed(seed=SEED_VALUE):
     """
     seed value를 고정하는 함수
     """
