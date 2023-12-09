@@ -12,6 +12,7 @@
 |:--:|:--:|
 |EDA|데이터 전처리를 수행하는 `DataPreprocessing.ipynb`, 간단히 데이터 확인하는 `EDA.ipynb`|
 |NLP|기타 기능을 분리한 `etc_plugin.py`, 모델 관련 부차적 함수를 분리한 `model_plugin.py`, 모델 학습 및 테스트를 하는 `run.ipynb`|
+|Dashboard||
 |TBD||
 
 ## Usage
