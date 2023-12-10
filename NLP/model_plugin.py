@@ -14,7 +14,7 @@ sentiment_id_to_str = ['1', '-1', '0']  # pos: 0, neg: 1, neu: 2로 변환
 sentiment_str_to_id = {sentiment_id_to_str[i]: i for i in range(len(sentiment_id_to_str))}
 
 
-class klue_Dataset(Dataset):
+class KlueDataset(Dataset):
     """
     Input: 정규표현식, 개수가 적은 속성 제거 등으로 전처리된 데이터셋
     Ouput: 1차원 텐서(__getitem__) / 샘플의 수(__len__)
@@ -112,7 +112,7 @@ def reshape_to_1d(val, Datas, labels, tokenizer): # train, validation, test별�
             tok_sentence = tokenizer(Datas[i], return_tensors="pt", padding='max_length' \
                             , truncation=True, max_length=256, add_special_tokens=True)  
             
-            klue_sets.append(klue_Dataset(tok_sentence, labels[i]))
+            klue_sets.append(KlueDataset(tok_sentence, labels[i]))
         
         return klue_sets
     
@@ -120,7 +120,7 @@ def reshape_to_1d(val, Datas, labels, tokenizer): # train, validation, test별�
         sen_tok_sentence = tokenizer(Datas, return_tensors="pt", padding='max_length' \
                             , truncation=True,max_length=256, add_special_tokens=True)  
         
-        SEN_klue_sets = klue_Dataset(sen_tok_sentence, labels)
+        SEN_klue_sets = KlueDataset(sen_tok_sentence, labels)
 
         return SEN_klue_sets
     
