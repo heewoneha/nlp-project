@@ -161,8 +161,7 @@ def show_test_evaluation(val, infers, infer_labels, category_with_original_aspec
         print(x, "th Test.....")
         labelss = []
         for i in infer_labels[x]:
-            for j in i:
-                labelss.append(j)
+            labelss.extend(i)
 
         precision, recall, f1, _ = precision_recall_fscore_support(labelss, infers[x], average=average)
         acc = accuracy_score(labelss, infers[x])
