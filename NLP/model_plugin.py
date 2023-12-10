@@ -2,13 +2,17 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from transformers import EvalPrediction
 from torch.utils.data import Dataset
 from sklearn.utils import shuffle
+from etc_plugin import load_jsonl
 import numpy as np
 import torch
 import random
 import os
 
 
+MODEL_NAME = 'klue/roberta-base'
 SEED_VALUE = 42
+TR_VL_SPLIT = 0.6
+VL_TS_SPLIT = 0.8
 
 sentiment_id_to_str = ['1', '-1', '0']  # pos: 0, neg: 1, neu: 2로 변환
 sentiment_str_to_id = {sentiment_id_to_str[i]: i for i in range(len(sentiment_id_to_str))}
@@ -59,6 +63,23 @@ def extract_annotation_keys(jsonl_data):
     unique_annotation_keys = list(set(annotation_keys))
 
     return unique_annotation_keys
+
+
+def prepare_data_and_categories(main_category):
+    jsonl_file_path = f"./preprocessed_data/{main_category}.jsonl"
+    data = load_jsonl(jsonl_file_path)
+
+    result = extract_annotation_keys(data)
+    original_aspects = sorted(result)
+    category_with_original_aspects = [f'{main_category}#{aspect}' for aspect in original_aspects]
+    
+    data_len = len(data)
+    
+    trains = data[:int(data_len*TR_VL_SPLIT)]
+    validations = data[int(data_len*TR_VL_SPLIT):int(data_len*VL_TS_SPLIT)]
+    tests = data[int(data_len*VL_TS_SPLIT):]
+
+    return trains, validations, tests, category_with_original_aspects
 
 
 def define_datasets(data, main_category, category_with_original_aspects): # train, validation, test별로 들어옴 !
