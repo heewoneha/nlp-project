@@ -66,6 +66,10 @@ def extract_annotation_keys(jsonl_data):
 
 
 def prepare_data_and_categories(main_category):
+    """
+    train, validation, test 데이터셋과
+    main_category 값에 맞는 aspects 반환하는 함수
+    """
     jsonl_file_path = f"./preprocessed_data/{main_category}.jsonl"
     data = load_jsonl(jsonl_file_path)
 
