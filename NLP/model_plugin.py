@@ -1,5 +1,6 @@
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from transformers import EvalPrediction
+from torch.utils.data import Dataset
 from sklearn.utils import shuffle
 import numpy as np
 import torch
@@ -13,7 +14,7 @@ sentiment_id_to_str = ['1', '-1', '0']  # pos: 0, neg: 1, neu: 2로 변환
 sentiment_str_to_id = {sentiment_id_to_str[i]: i for i in range(len(sentiment_id_to_str))}
 
 
-class klue_Dataset(torch.utils.data.Dataset):
+class klue_Dataset(Dataset):
     """
     Input: 정규표현식, 개수가 적은 속성 제거 등으로 전처리된 데이터셋
     Ouput: 1차원 텐서(__getitem__) / 샘플의 수(__len__)
