@@ -7,7 +7,10 @@ import numpy as np
 import torch
 import random
 import os
+import sys
 
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
+from NLP.etc_plugin import load_jsonl
 
 MODEL_NAME = 'klue/roberta-base'
 SEED_VALUE = 42
