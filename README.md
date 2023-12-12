@@ -16,8 +16,23 @@
 
 ## Usage
 
-- Python 3.8.10
+### Python 3.8.10
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+python -m venv myenv &&
+source myenv/bin/activate &&
+pip install -r requirements.txt &&
+jupyter notebook
+```
+
+### Execution Order
+
+> [!Important]
+> [EDA/absa_data](./EDA/absa_data/labeling_data/)안에 AI-Hub 속성기반 감성분석 데이터(도메인이 '화장품'인 데이터만 해당)를 넣고 아래와 같은 순서로 실행해주세요.
+
+```mermaid
+flowchart LR;
+    A[EDA/DataPreprocessing.ipynb]---->B;
+    B[EDA/EDA.ipynb]---->C;
+    C[NLP/run.ipynb]---->D[Dashboard/Dashboard.ipynb];
+```
