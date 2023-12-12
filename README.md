@@ -1,6 +1,9 @@
 # Aspect-based Sentiment Analysis on Cosmetics Customer Reviews
 2023-2 자연언어처리 프로젝트
 
+## Result
+![Dashboard](https://github.com/heewoneha/nlp-project/assets/74031620/e8beed2c-a748-4177-be62-7e902dcae898)
+
 ## Dataset
 [AI-Hub 속성기반 감성분석 데이터](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=&topMenu=&aihubDataSe=realm&dataSetSn=71603)를 사용했습니다.
 
