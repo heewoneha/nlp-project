@@ -2,7 +2,6 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from transformers import EvalPrediction
 from torch.utils.data import Dataset
 from sklearn.utils import shuffle
-from NLP.etc_plugin import load_jsonl
 import numpy as np
 import torch
 import random
@@ -95,8 +94,8 @@ def define_datasets(data, main_category, category_with_original_aspects): # trai
     """
     속성 & 감성 관련 데이터 및 레이블을 정의하는 함수
     """
-    ASP_datas = [[] for i in range(len(category_with_original_aspects))]
-    ASP_labels = [[] for i in range(len(category_with_original_aspects))]
+    ASP_datas = [[] for _ in range(len(category_with_original_aspects))]
+    ASP_labels = [[] for _ in range(len(category_with_original_aspects))]
 
     SEN_data = []
     SEN_labels = []
